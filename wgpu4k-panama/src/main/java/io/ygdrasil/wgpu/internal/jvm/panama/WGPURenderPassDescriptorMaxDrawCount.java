@@ -2,23 +2,19 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.function.Consumer;
 
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPURenderPassDescriptorMaxDrawCount {
  *     WGPUChainedStruct chain;
  *     uint64_t maxDrawCount;
  * }
- *}
+ * }
  */
 public class WGPURenderPassDescriptorMaxDrawCount {
 
@@ -27,8 +23,8 @@ public class WGPURenderPassDescriptorMaxDrawCount {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            WGPUChainedStruct.layout().withName("chain"),
-            wgpu_h.C_LONG_LONG.withName("maxDrawCount")
+        WGPUChainedStruct.layout().withName("chain"),
+        wgpu_h.C_LONG_LONG.withName("maxDrawCount")
     ).withName("WGPURenderPassDescriptorMaxDrawCount");
 
     /**
@@ -38,13 +34,13 @@ public class WGPURenderPassDescriptorMaxDrawCount {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -54,9 +50,9 @@ public class WGPURenderPassDescriptorMaxDrawCount {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -64,9 +60,9 @@ public class WGPURenderPassDescriptorMaxDrawCount {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -74,21 +70,21 @@ public class WGPURenderPassDescriptorMaxDrawCount {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final OfLong maxDrawCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("maxDrawCount"));
+    private static final OfLong maxDrawCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("maxDrawCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint64_t maxDrawCount
-     *}
+     * }
      */
     public static final OfLong maxDrawCount$layout() {
         return maxDrawCount$LAYOUT;
@@ -98,9 +94,9 @@ public class WGPURenderPassDescriptorMaxDrawCount {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint64_t maxDrawCount
-     *}
+     * }
      */
     public static final long maxDrawCount$offset() {
         return maxDrawCount$OFFSET;
@@ -108,9 +104,9 @@ public class WGPURenderPassDescriptorMaxDrawCount {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint64_t maxDrawCount
-     *}
+     * }
      */
     public static long maxDrawCount(MemorySegment struct) {
         return struct.get(maxDrawCount$LAYOUT, maxDrawCount$OFFSET);
@@ -118,9 +114,9 @@ public class WGPURenderPassDescriptorMaxDrawCount {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint64_t maxDrawCount
-     *}
+     * }
      */
     public static void maxDrawCount(MemorySegment struct, long fieldValue) {
         struct.set(maxDrawCount$LAYOUT, maxDrawCount$OFFSET, fieldValue);
@@ -137,9 +133,7 @@ public class WGPURenderPassDescriptorMaxDrawCount {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

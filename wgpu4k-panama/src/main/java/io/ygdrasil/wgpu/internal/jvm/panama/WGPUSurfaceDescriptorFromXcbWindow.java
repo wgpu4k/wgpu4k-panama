@@ -2,24 +2,20 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.function.Consumer;
 
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUSurfaceDescriptorFromXcbWindow {
  *     WGPUChainedStruct chain;
  *     void *connection;
  *     uint32_t window;
  * }
- *}
+ * }
  */
 public class WGPUSurfaceDescriptorFromXcbWindow {
 
@@ -28,10 +24,10 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            WGPUChainedStruct.layout().withName("chain"),
-            wgpu_h.C_POINTER.withName("connection"),
-            wgpu_h.C_INT.withName("window"),
-            MemoryLayout.paddingLayout(4)
+        WGPUChainedStruct.layout().withName("chain"),
+        wgpu_h.C_POINTER.withName("connection"),
+        wgpu_h.C_INT.withName("window"),
+        MemoryLayout.paddingLayout(4)
     ).withName("WGPUSurfaceDescriptorFromXcbWindow");
 
     /**
@@ -41,13 +37,13 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -57,9 +53,9 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -67,9 +63,9 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -77,21 +73,21 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final AddressLayout connection$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("connection"));
+    private static final AddressLayout connection$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("connection"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *connection
-     *}
+     * }
      */
     public static final AddressLayout connection$layout() {
         return connection$LAYOUT;
@@ -101,9 +97,9 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *connection
-     *}
+     * }
      */
     public static final long connection$offset() {
         return connection$OFFSET;
@@ -111,9 +107,9 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *connection
-     *}
+     * }
      */
     public static MemorySegment connection(MemorySegment struct) {
         return struct.get(connection$LAYOUT, connection$OFFSET);
@@ -121,21 +117,21 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * void *connection
-     *}
+     * }
      */
     public static void connection(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(connection$LAYOUT, connection$OFFSET, fieldValue);
     }
 
-    private static final OfInt window$LAYOUT = (OfInt) $LAYOUT.select(groupElement("window"));
+    private static final OfInt window$LAYOUT = (OfInt)$LAYOUT.select(groupElement("window"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t window
-     *}
+     * }
      */
     public static final OfInt window$layout() {
         return window$LAYOUT;
@@ -145,9 +141,9 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t window
-     *}
+     * }
      */
     public static final long window$offset() {
         return window$OFFSET;
@@ -155,9 +151,9 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t window
-     *}
+     * }
      */
     public static int window(MemorySegment struct) {
         return struct.get(window$LAYOUT, window$OFFSET);
@@ -165,9 +161,9 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t window
-     *}
+     * }
      */
     public static void window(MemorySegment struct, int fieldValue) {
         struct.set(window$LAYOUT, window$OFFSET, fieldValue);
@@ -184,9 +180,7 @@ public class WGPUSurfaceDescriptorFromXcbWindow {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

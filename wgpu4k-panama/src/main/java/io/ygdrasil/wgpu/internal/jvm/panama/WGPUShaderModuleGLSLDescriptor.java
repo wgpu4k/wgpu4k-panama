@@ -2,18 +2,14 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.function.Consumer;
 
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUShaderModuleGLSLDescriptor {
  *     WGPUChainedStruct chain;
  *     WGPUShaderStage stage;
@@ -21,7 +17,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     uint32_t defineCount;
  *     WGPUShaderDefine *defines;
  * }
- *}
+ * }
  */
 public class WGPUShaderModuleGLSLDescriptor {
 
@@ -30,13 +26,13 @@ public class WGPUShaderModuleGLSLDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            WGPUChainedStruct.layout().withName("chain"),
-            wgpu_h.C_INT.withName("stage"),
-            MemoryLayout.paddingLayout(4),
-            wgpu_h.C_POINTER.withName("code"),
-            wgpu_h.C_INT.withName("defineCount"),
-            MemoryLayout.paddingLayout(4),
-            wgpu_h.C_POINTER.withName("defines")
+        WGPUChainedStruct.layout().withName("chain"),
+        wgpu_h.C_INT.withName("stage"),
+        MemoryLayout.paddingLayout(4),
+        wgpu_h.C_POINTER.withName("code"),
+        wgpu_h.C_INT.withName("defineCount"),
+        MemoryLayout.paddingLayout(4),
+        wgpu_h.C_POINTER.withName("defines")
     ).withName("WGPUShaderModuleGLSLDescriptor");
 
     /**
@@ -46,13 +42,13 @@ public class WGPUShaderModuleGLSLDescriptor {
         return $LAYOUT;
     }
 
-    private static final GroupLayout chain$LAYOUT = (GroupLayout) $LAYOUT.select(groupElement("chain"));
+    private static final GroupLayout chain$LAYOUT = (GroupLayout)$LAYOUT.select(groupElement("chain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final GroupLayout chain$layout() {
         return chain$LAYOUT;
@@ -62,9 +58,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static final long chain$offset() {
         return chain$OFFSET;
@@ -72,9 +68,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static MemorySegment chain(MemorySegment struct) {
         return struct.asSlice(chain$OFFSET, chain$LAYOUT.byteSize());
@@ -82,21 +78,21 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUChainedStruct chain
-     *}
+     * }
      */
     public static void chain(MemorySegment struct, MemorySegment fieldValue) {
         MemorySegment.copy(fieldValue, 0L, struct, chain$OFFSET, chain$LAYOUT.byteSize());
     }
 
-    private static final OfInt stage$LAYOUT = (OfInt) $LAYOUT.select(groupElement("stage"));
+    private static final OfInt stage$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stage"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderStage stage
-     *}
+     * }
      */
     public static final OfInt stage$layout() {
         return stage$LAYOUT;
@@ -106,9 +102,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderStage stage
-     *}
+     * }
      */
     public static final long stage$offset() {
         return stage$OFFSET;
@@ -116,9 +112,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderStage stage
-     *}
+     * }
      */
     public static int stage(MemorySegment struct) {
         return struct.get(stage$LAYOUT, stage$OFFSET);
@@ -126,21 +122,21 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderStage stage
-     *}
+     * }
      */
     public static void stage(MemorySegment struct, int fieldValue) {
         struct.set(stage$LAYOUT, stage$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout code$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("code"));
+    private static final AddressLayout code$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("code"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *code
-     *}
+     * }
      */
     public static final AddressLayout code$layout() {
         return code$LAYOUT;
@@ -150,9 +146,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *code
-     *}
+     * }
      */
     public static final long code$offset() {
         return code$OFFSET;
@@ -160,9 +156,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *code
-     *}
+     * }
      */
     public static MemorySegment code(MemorySegment struct) {
         return struct.get(code$LAYOUT, code$OFFSET);
@@ -170,21 +166,21 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *code
-     *}
+     * }
      */
     public static void code(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(code$LAYOUT, code$OFFSET, fieldValue);
     }
 
-    private static final OfInt defineCount$LAYOUT = (OfInt) $LAYOUT.select(groupElement("defineCount"));
+    private static final OfInt defineCount$LAYOUT = (OfInt)$LAYOUT.select(groupElement("defineCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t defineCount
-     *}
+     * }
      */
     public static final OfInt defineCount$layout() {
         return defineCount$LAYOUT;
@@ -194,9 +190,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t defineCount
-     *}
+     * }
      */
     public static final long defineCount$offset() {
         return defineCount$OFFSET;
@@ -204,9 +200,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t defineCount
-     *}
+     * }
      */
     public static int defineCount(MemorySegment struct) {
         return struct.get(defineCount$LAYOUT, defineCount$OFFSET);
@@ -214,21 +210,21 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t defineCount
-     *}
+     * }
      */
     public static void defineCount(MemorySegment struct, int fieldValue) {
         struct.set(defineCount$LAYOUT, defineCount$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout defines$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("defines"));
+    private static final AddressLayout defines$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("defines"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderDefine *defines
-     *}
+     * }
      */
     public static final AddressLayout defines$layout() {
         return defines$LAYOUT;
@@ -238,9 +234,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderDefine *defines
-     *}
+     * }
      */
     public static final long defines$offset() {
         return defines$OFFSET;
@@ -248,9 +244,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderDefine *defines
-     *}
+     * }
      */
     public static MemorySegment defines(MemorySegment struct) {
         return struct.get(defines$LAYOUT, defines$OFFSET);
@@ -258,9 +254,9 @@ public class WGPUShaderModuleGLSLDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUShaderDefine *defines
-     *}
+     * }
      */
     public static void defines(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(defines$LAYOUT, defines$OFFSET, fieldValue);
@@ -277,9 +273,7 @@ public class WGPUShaderModuleGLSLDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

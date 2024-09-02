@@ -2,20 +2,16 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
-import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
-
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef WGPUBool (*WGPUProcInstanceHasWGSLLanguageFeature)(WGPUInstance, WGPUWGSLFeatureName)
- *}
+ * }
  */
 public class WGPUProcInstanceHasWGSLLanguageFeature {
 
@@ -31,9 +27,9 @@ public class WGPUProcInstanceHasWGSLLanguageFeature {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.of(
-            wgpu_h.C_INT,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_INT
+        wgpu_h.C_INT,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_INT
     );
 
     /**
@@ -58,7 +54,7 @@ public class WGPUProcInstanceHasWGSLLanguageFeature {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static int invoke(MemorySegment funcPtr, MemorySegment instance, int feature) {
+    public static int invoke(MemorySegment funcPtr,MemorySegment instance, int feature) {
         try {
             return (int) DOWN$MH.invokeExact(funcPtr, instance, feature);
         } catch (Throwable ex$) {

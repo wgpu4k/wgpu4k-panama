@@ -2,25 +2,21 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.function.Consumer;
 
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPUBindGroupLayoutDescriptor {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *label;
  *     size_t entryCount;
  *     const WGPUBindGroupLayoutEntry *entries;
  * }
- *}
+ * }
  */
 public class WGPUBindGroupLayoutDescriptor {
 
@@ -29,10 +25,10 @@ public class WGPUBindGroupLayoutDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("label"),
-            wgpu_h.C_LONG.withName("entryCount"),
-            wgpu_h.C_POINTER.withName("entries")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("label"),
+        wgpu_h.C_LONG.withName("entryCount"),
+        wgpu_h.C_POINTER.withName("entries")
     ).withName("WGPUBindGroupLayoutDescriptor");
 
     /**
@@ -42,13 +38,13 @@ public class WGPUBindGroupLayoutDescriptor {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -58,9 +54,9 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -68,9 +64,9 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -78,21 +74,21 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("label"));
+    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final AddressLayout label$layout() {
         return label$LAYOUT;
@@ -102,9 +98,9 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final long label$offset() {
         return label$OFFSET;
@@ -112,9 +108,9 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static MemorySegment label(MemorySegment struct) {
         return struct.get(label$LAYOUT, label$OFFSET);
@@ -122,21 +118,21 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(label$LAYOUT, label$OFFSET, fieldValue);
     }
 
-    private static final OfLong entryCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("entryCount"));
+    private static final OfLong entryCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("entryCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t entryCount
-     *}
+     * }
      */
     public static final OfLong entryCount$layout() {
         return entryCount$LAYOUT;
@@ -146,9 +142,9 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t entryCount
-     *}
+     * }
      */
     public static final long entryCount$offset() {
         return entryCount$OFFSET;
@@ -156,9 +152,9 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t entryCount
-     *}
+     * }
      */
     public static long entryCount(MemorySegment struct) {
         return struct.get(entryCount$LAYOUT, entryCount$OFFSET);
@@ -166,21 +162,21 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t entryCount
-     *}
+     * }
      */
     public static void entryCount(MemorySegment struct, long fieldValue) {
         struct.set(entryCount$LAYOUT, entryCount$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout entries$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("entries"));
+    private static final AddressLayout entries$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("entries"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUBindGroupLayoutEntry *entries
-     *}
+     * }
      */
     public static final AddressLayout entries$layout() {
         return entries$LAYOUT;
@@ -190,9 +186,9 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUBindGroupLayoutEntry *entries
-     *}
+     * }
      */
     public static final long entries$offset() {
         return entries$OFFSET;
@@ -200,9 +196,9 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUBindGroupLayoutEntry *entries
-     *}
+     * }
      */
     public static MemorySegment entries(MemorySegment struct) {
         return struct.get(entries$LAYOUT, entries$OFFSET);
@@ -210,9 +206,9 @@ public class WGPUBindGroupLayoutDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUBindGroupLayoutEntry *entries
-     *}
+     * }
      */
     public static void entries(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(entries$LAYOUT, entries$OFFSET, fieldValue);
@@ -229,9 +225,7 @@ public class WGPUBindGroupLayoutDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

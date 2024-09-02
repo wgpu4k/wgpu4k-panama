@@ -2,18 +2,15 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.function.Consumer;
 
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.OfInt;
+import static java.lang.foreign.ValueLayout.OfLong;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPURenderBundleEncoderDescriptor {
  *     const WGPUChainedStruct *nextInChain;
  *     const char *label;
@@ -24,7 +21,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     WGPUBool depthReadOnly;
  *     WGPUBool stencilReadOnly;
  * }
- *}
+ * }
  */
 public class WGPURenderBundleEncoderDescriptor {
 
@@ -33,14 +30,14 @@ public class WGPURenderBundleEncoderDescriptor {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("label"),
-            wgpu_h.C_LONG.withName("colorFormatCount"),
-            wgpu_h.C_POINTER.withName("colorFormats"),
-            wgpu_h.C_INT.withName("depthStencilFormat"),
-            wgpu_h.C_INT.withName("sampleCount"),
-            wgpu_h.C_INT.withName("depthReadOnly"),
-            wgpu_h.C_INT.withName("stencilReadOnly")
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("label"),
+        wgpu_h.C_LONG.withName("colorFormatCount"),
+        wgpu_h.C_POINTER.withName("colorFormats"),
+        wgpu_h.C_INT.withName("depthStencilFormat"),
+        wgpu_h.C_INT.withName("sampleCount"),
+        wgpu_h.C_INT.withName("depthReadOnly"),
+        wgpu_h.C_INT.withName("stencilReadOnly")
     ).withName("WGPURenderBundleEncoderDescriptor");
 
     /**
@@ -50,13 +47,13 @@ public class WGPURenderBundleEncoderDescriptor {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -66,9 +63,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -76,9 +73,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -86,21 +83,21 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout label$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("label"));
+    private static final AddressLayout label$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("label"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final AddressLayout label$layout() {
         return label$LAYOUT;
@@ -110,9 +107,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static final long label$offset() {
         return label$OFFSET;
@@ -120,9 +117,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static MemorySegment label(MemorySegment struct) {
         return struct.get(label$LAYOUT, label$OFFSET);
@@ -130,21 +127,21 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const char *label
-     *}
+     * }
      */
     public static void label(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(label$LAYOUT, label$OFFSET, fieldValue);
     }
 
-    private static final OfLong colorFormatCount$LAYOUT = (OfLong) $LAYOUT.select(groupElement("colorFormatCount"));
+    private static final OfLong colorFormatCount$LAYOUT = (OfLong)$LAYOUT.select(groupElement("colorFormatCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t colorFormatCount
-     *}
+     * }
      */
     public static final OfLong colorFormatCount$layout() {
         return colorFormatCount$LAYOUT;
@@ -154,9 +151,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t colorFormatCount
-     *}
+     * }
      */
     public static final long colorFormatCount$offset() {
         return colorFormatCount$OFFSET;
@@ -164,9 +161,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t colorFormatCount
-     *}
+     * }
      */
     public static long colorFormatCount(MemorySegment struct) {
         return struct.get(colorFormatCount$LAYOUT, colorFormatCount$OFFSET);
@@ -174,21 +171,21 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * size_t colorFormatCount
-     *}
+     * }
      */
     public static void colorFormatCount(MemorySegment struct, long fieldValue) {
         struct.set(colorFormatCount$LAYOUT, colorFormatCount$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout colorFormats$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("colorFormats"));
+    private static final AddressLayout colorFormats$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("colorFormats"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUTextureFormat *colorFormats
-     *}
+     * }
      */
     public static final AddressLayout colorFormats$layout() {
         return colorFormats$LAYOUT;
@@ -198,9 +195,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUTextureFormat *colorFormats
-     *}
+     * }
      */
     public static final long colorFormats$offset() {
         return colorFormats$OFFSET;
@@ -208,9 +205,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUTextureFormat *colorFormats
-     *}
+     * }
      */
     public static MemorySegment colorFormats(MemorySegment struct) {
         return struct.get(colorFormats$LAYOUT, colorFormats$OFFSET);
@@ -218,21 +215,21 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUTextureFormat *colorFormats
-     *}
+     * }
      */
     public static void colorFormats(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(colorFormats$LAYOUT, colorFormats$OFFSET, fieldValue);
     }
 
-    private static final OfInt depthStencilFormat$LAYOUT = (OfInt) $LAYOUT.select(groupElement("depthStencilFormat"));
+    private static final OfInt depthStencilFormat$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depthStencilFormat"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureFormat depthStencilFormat
-     *}
+     * }
      */
     public static final OfInt depthStencilFormat$layout() {
         return depthStencilFormat$LAYOUT;
@@ -242,9 +239,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureFormat depthStencilFormat
-     *}
+     * }
      */
     public static final long depthStencilFormat$offset() {
         return depthStencilFormat$OFFSET;
@@ -252,9 +249,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureFormat depthStencilFormat
-     *}
+     * }
      */
     public static int depthStencilFormat(MemorySegment struct) {
         return struct.get(depthStencilFormat$LAYOUT, depthStencilFormat$OFFSET);
@@ -262,21 +259,21 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUTextureFormat depthStencilFormat
-     *}
+     * }
      */
     public static void depthStencilFormat(MemorySegment struct, int fieldValue) {
         struct.set(depthStencilFormat$LAYOUT, depthStencilFormat$OFFSET, fieldValue);
     }
 
-    private static final OfInt sampleCount$LAYOUT = (OfInt) $LAYOUT.select(groupElement("sampleCount"));
+    private static final OfInt sampleCount$LAYOUT = (OfInt)$LAYOUT.select(groupElement("sampleCount"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t sampleCount
-     *}
+     * }
      */
     public static final OfInt sampleCount$layout() {
         return sampleCount$LAYOUT;
@@ -286,9 +283,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t sampleCount
-     *}
+     * }
      */
     public static final long sampleCount$offset() {
         return sampleCount$OFFSET;
@@ -296,9 +293,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t sampleCount
-     *}
+     * }
      */
     public static int sampleCount(MemorySegment struct) {
         return struct.get(sampleCount$LAYOUT, sampleCount$OFFSET);
@@ -306,21 +303,21 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * uint32_t sampleCount
-     *}
+     * }
      */
     public static void sampleCount(MemorySegment struct, int fieldValue) {
         struct.set(sampleCount$LAYOUT, sampleCount$OFFSET, fieldValue);
     }
 
-    private static final OfInt depthReadOnly$LAYOUT = (OfInt) $LAYOUT.select(groupElement("depthReadOnly"));
+    private static final OfInt depthReadOnly$LAYOUT = (OfInt)$LAYOUT.select(groupElement("depthReadOnly"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool depthReadOnly
-     *}
+     * }
      */
     public static final OfInt depthReadOnly$layout() {
         return depthReadOnly$LAYOUT;
@@ -330,9 +327,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool depthReadOnly
-     *}
+     * }
      */
     public static final long depthReadOnly$offset() {
         return depthReadOnly$OFFSET;
@@ -340,9 +337,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool depthReadOnly
-     *}
+     * }
      */
     public static int depthReadOnly(MemorySegment struct) {
         return struct.get(depthReadOnly$LAYOUT, depthReadOnly$OFFSET);
@@ -350,21 +347,21 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool depthReadOnly
-     *}
+     * }
      */
     public static void depthReadOnly(MemorySegment struct, int fieldValue) {
         struct.set(depthReadOnly$LAYOUT, depthReadOnly$OFFSET, fieldValue);
     }
 
-    private static final OfInt stencilReadOnly$LAYOUT = (OfInt) $LAYOUT.select(groupElement("stencilReadOnly"));
+    private static final OfInt stencilReadOnly$LAYOUT = (OfInt)$LAYOUT.select(groupElement("stencilReadOnly"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool stencilReadOnly
-     *}
+     * }
      */
     public static final OfInt stencilReadOnly$layout() {
         return stencilReadOnly$LAYOUT;
@@ -374,9 +371,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool stencilReadOnly
-     *}
+     * }
      */
     public static final long stencilReadOnly$offset() {
         return stencilReadOnly$OFFSET;
@@ -384,9 +381,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool stencilReadOnly
-     *}
+     * }
      */
     public static int stencilReadOnly(MemorySegment struct) {
         return struct.get(stencilReadOnly$LAYOUT, stencilReadOnly$OFFSET);
@@ -394,9 +391,9 @@ public class WGPURenderBundleEncoderDescriptor {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool stencilReadOnly
-     *}
+     * }
      */
     public static void stencilReadOnly(MemorySegment struct, int fieldValue) {
         struct.set(stencilReadOnly$LAYOUT, stencilReadOnly$OFFSET, fieldValue);
@@ -413,9 +410,7 @@ public class WGPURenderBundleEncoderDescriptor {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

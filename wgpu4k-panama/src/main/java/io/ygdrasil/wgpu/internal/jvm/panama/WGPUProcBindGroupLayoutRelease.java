@@ -2,20 +2,16 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
-import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
-
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcBindGroupLayoutRelease)(WGPUBindGroupLayout)
- *}
+ * }
  */
 public class WGPUProcBindGroupLayoutRelease {
 
@@ -31,7 +27,7 @@ public class WGPUProcBindGroupLayoutRelease {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -56,9 +52,9 @@ public class WGPUProcBindGroupLayoutRelease {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment bindGroupLayout) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment bindGroupLayout) {
         try {
-            DOWN$MH.invokeExact(funcPtr, bindGroupLayout);
+             DOWN$MH.invokeExact(funcPtr, bindGroupLayout);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

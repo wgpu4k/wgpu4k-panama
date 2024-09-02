@@ -2,20 +2,16 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
-import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
-
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcCommandEncoderCopyBufferToBuffer)(WGPUCommandEncoder, WGPUBuffer, uint64_t, WGPUBuffer, uint64_t, uint64_t)
- *}
+ * }
  */
 public class WGPUProcCommandEncoderCopyBufferToBuffer {
 
@@ -31,12 +27,12 @@ public class WGPUProcCommandEncoderCopyBufferToBuffer {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_LONG_LONG,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_LONG_LONG,
-            wgpu_h.C_LONG_LONG
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_LONG_LONG,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_LONG_LONG,
+        wgpu_h.C_LONG_LONG
     );
 
     /**
@@ -61,9 +57,9 @@ public class WGPUProcCommandEncoderCopyBufferToBuffer {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment commandEncoder, MemorySegment source, long sourceOffset, MemorySegment destination, long destinationOffset, long size) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment commandEncoder, MemorySegment source, long sourceOffset, MemorySegment destination, long destinationOffset, long size) {
         try {
-            DOWN$MH.invokeExact(funcPtr, commandEncoder, source, sourceOffset, destination, destinationOffset, size);
+             DOWN$MH.invokeExact(funcPtr, commandEncoder, source, sourceOffset, destination, destinationOffset, size);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

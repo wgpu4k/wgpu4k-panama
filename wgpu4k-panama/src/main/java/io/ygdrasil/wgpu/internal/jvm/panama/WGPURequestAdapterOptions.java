@@ -2,18 +2,14 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
 import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
+import java.util.function.Consumer;
 
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import static java.lang.foreign.MemoryLayout.PathElement.groupElement;
+import static java.lang.foreign.ValueLayout.OfInt;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * struct WGPURequestAdapterOptions {
  *     const WGPUChainedStruct *nextInChain;
  *     WGPUSurface compatibleSurface;
@@ -21,7 +17,7 @@ import static java.lang.foreign.MemoryLayout.PathElement.*;
  *     WGPUBackendType backendType;
  *     WGPUBool forceFallbackAdapter;
  * }
- *}
+ * }
  */
 public class WGPURequestAdapterOptions {
 
@@ -30,12 +26,12 @@ public class WGPURequestAdapterOptions {
     }
 
     private static final GroupLayout $LAYOUT = MemoryLayout.structLayout(
-            wgpu_h.C_POINTER.withName("nextInChain"),
-            wgpu_h.C_POINTER.withName("compatibleSurface"),
-            wgpu_h.C_INT.withName("powerPreference"),
-            wgpu_h.C_INT.withName("backendType"),
-            wgpu_h.C_INT.withName("forceFallbackAdapter"),
-            MemoryLayout.paddingLayout(4)
+        wgpu_h.C_POINTER.withName("nextInChain"),
+        wgpu_h.C_POINTER.withName("compatibleSurface"),
+        wgpu_h.C_INT.withName("powerPreference"),
+        wgpu_h.C_INT.withName("backendType"),
+        wgpu_h.C_INT.withName("forceFallbackAdapter"),
+        MemoryLayout.paddingLayout(4)
     ).withName("WGPURequestAdapterOptions");
 
     /**
@@ -45,13 +41,13 @@ public class WGPURequestAdapterOptions {
         return $LAYOUT;
     }
 
-    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("nextInChain"));
+    private static final AddressLayout nextInChain$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("nextInChain"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final AddressLayout nextInChain$layout() {
         return nextInChain$LAYOUT;
@@ -61,9 +57,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static final long nextInChain$offset() {
         return nextInChain$OFFSET;
@@ -71,9 +67,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static MemorySegment nextInChain(MemorySegment struct) {
         return struct.get(nextInChain$LAYOUT, nextInChain$OFFSET);
@@ -81,21 +77,21 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * const WGPUChainedStruct *nextInChain
-     *}
+     * }
      */
     public static void nextInChain(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(nextInChain$LAYOUT, nextInChain$OFFSET, fieldValue);
     }
 
-    private static final AddressLayout compatibleSurface$LAYOUT = (AddressLayout) $LAYOUT.select(groupElement("compatibleSurface"));
+    private static final AddressLayout compatibleSurface$LAYOUT = (AddressLayout)$LAYOUT.select(groupElement("compatibleSurface"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSurface compatibleSurface
-     *}
+     * }
      */
     public static final AddressLayout compatibleSurface$layout() {
         return compatibleSurface$LAYOUT;
@@ -105,9 +101,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSurface compatibleSurface
-     *}
+     * }
      */
     public static final long compatibleSurface$offset() {
         return compatibleSurface$OFFSET;
@@ -115,9 +111,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSurface compatibleSurface
-     *}
+     * }
      */
     public static MemorySegment compatibleSurface(MemorySegment struct) {
         return struct.get(compatibleSurface$LAYOUT, compatibleSurface$OFFSET);
@@ -125,21 +121,21 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUSurface compatibleSurface
-     *}
+     * }
      */
     public static void compatibleSurface(MemorySegment struct, MemorySegment fieldValue) {
         struct.set(compatibleSurface$LAYOUT, compatibleSurface$OFFSET, fieldValue);
     }
 
-    private static final OfInt powerPreference$LAYOUT = (OfInt) $LAYOUT.select(groupElement("powerPreference"));
+    private static final OfInt powerPreference$LAYOUT = (OfInt)$LAYOUT.select(groupElement("powerPreference"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPowerPreference powerPreference
-     *}
+     * }
      */
     public static final OfInt powerPreference$layout() {
         return powerPreference$LAYOUT;
@@ -149,9 +145,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPowerPreference powerPreference
-     *}
+     * }
      */
     public static final long powerPreference$offset() {
         return powerPreference$OFFSET;
@@ -159,9 +155,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPowerPreference powerPreference
-     *}
+     * }
      */
     public static int powerPreference(MemorySegment struct) {
         return struct.get(powerPreference$LAYOUT, powerPreference$OFFSET);
@@ -169,21 +165,21 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUPowerPreference powerPreference
-     *}
+     * }
      */
     public static void powerPreference(MemorySegment struct, int fieldValue) {
         struct.set(powerPreference$LAYOUT, powerPreference$OFFSET, fieldValue);
     }
 
-    private static final OfInt backendType$LAYOUT = (OfInt) $LAYOUT.select(groupElement("backendType"));
+    private static final OfInt backendType$LAYOUT = (OfInt)$LAYOUT.select(groupElement("backendType"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBackendType backendType
-     *}
+     * }
      */
     public static final OfInt backendType$layout() {
         return backendType$LAYOUT;
@@ -193,9 +189,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBackendType backendType
-     *}
+     * }
      */
     public static final long backendType$offset() {
         return backendType$OFFSET;
@@ -203,9 +199,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBackendType backendType
-     *}
+     * }
      */
     public static int backendType(MemorySegment struct) {
         return struct.get(backendType$LAYOUT, backendType$OFFSET);
@@ -213,21 +209,21 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBackendType backendType
-     *}
+     * }
      */
     public static void backendType(MemorySegment struct, int fieldValue) {
         struct.set(backendType$LAYOUT, backendType$OFFSET, fieldValue);
     }
 
-    private static final OfInt forceFallbackAdapter$LAYOUT = (OfInt) $LAYOUT.select(groupElement("forceFallbackAdapter"));
+    private static final OfInt forceFallbackAdapter$LAYOUT = (OfInt)$LAYOUT.select(groupElement("forceFallbackAdapter"));
 
     /**
      * Layout for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool forceFallbackAdapter
-     *}
+     * }
      */
     public static final OfInt forceFallbackAdapter$layout() {
         return forceFallbackAdapter$LAYOUT;
@@ -237,9 +233,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Offset for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool forceFallbackAdapter
-     *}
+     * }
      */
     public static final long forceFallbackAdapter$offset() {
         return forceFallbackAdapter$OFFSET;
@@ -247,9 +243,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Getter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool forceFallbackAdapter
-     *}
+     * }
      */
     public static int forceFallbackAdapter(MemorySegment struct) {
         return struct.get(forceFallbackAdapter$LAYOUT, forceFallbackAdapter$OFFSET);
@@ -257,9 +253,9 @@ public class WGPURequestAdapterOptions {
 
     /**
      * Setter for field:
-     * {@snippet lang = c:
+     * {@snippet lang=c :
      * WGPUBool forceFallbackAdapter
-     *}
+     * }
      */
     public static void forceFallbackAdapter(MemorySegment struct, int fieldValue) {
         struct.set(forceFallbackAdapter$LAYOUT, forceFallbackAdapter$OFFSET, fieldValue);
@@ -276,9 +272,7 @@ public class WGPURequestAdapterOptions {
     /**
      * The size (in bytes) of this struct
      */
-    public static long sizeof() {
-        return layout().byteSize();
-    }
+    public static long sizeof() { return layout().byteSize(); }
 
     /**
      * Allocate a segment of size {@code layout().byteSize()} using {@code allocator}

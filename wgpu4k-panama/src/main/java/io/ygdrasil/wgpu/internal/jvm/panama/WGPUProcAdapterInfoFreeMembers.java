@@ -2,20 +2,16 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
-import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
-
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUProcAdapterInfoFreeMembers)(WGPUAdapterInfo)
- *}
+ * }
  */
 public class WGPUProcAdapterInfoFreeMembers {
 
@@ -31,7 +27,7 @@ public class WGPUProcAdapterInfoFreeMembers {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            WGPUAdapterInfo.layout()
+        WGPUAdapterInfo.layout()
     );
 
     /**
@@ -56,9 +52,9 @@ public class WGPUProcAdapterInfoFreeMembers {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, MemorySegment adapterInfo) {
+    public static void invoke(MemorySegment funcPtr,MemorySegment adapterInfo) {
         try {
-            DOWN$MH.invokeExact(funcPtr, adapterInfo);
+             DOWN$MH.invokeExact(funcPtr, adapterInfo);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }

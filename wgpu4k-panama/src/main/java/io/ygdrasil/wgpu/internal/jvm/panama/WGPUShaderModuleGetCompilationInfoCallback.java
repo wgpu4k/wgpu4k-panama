@@ -2,24 +2,20 @@
 
 package io.ygdrasil.wgpu.internal.jvm.panama;
 
-import java.lang.invoke.*;
-import java.lang.foreign.*;
-import java.nio.ByteOrder;
-import java.util.*;
-import java.util.function.*;
-import java.util.stream.*;
-
-import static java.lang.foreign.ValueLayout.*;
-import static java.lang.foreign.MemoryLayout.PathElement.*;
+import java.lang.foreign.Arena;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.Linker;
+import java.lang.foreign.MemorySegment;
+import java.lang.invoke.MethodHandle;
 
 /**
- * {@snippet lang = c:
+ * {@snippet lang=c :
  * typedef void (*WGPUShaderModuleGetCompilationInfoCallback)(WGPUCompilationInfoRequestStatus, const struct WGPUCompilationInfo {
  *     const WGPUChainedStruct *nextInChain;
  *     size_t messageCount;
  *     const WGPUCompilationMessage *messages;
  * } *, void *)
- *}
+ * }
  */
 public class WGPUShaderModuleGetCompilationInfoCallback {
 
@@ -35,9 +31,9 @@ public class WGPUShaderModuleGetCompilationInfoCallback {
     }
 
     private static final FunctionDescriptor $DESC = FunctionDescriptor.ofVoid(
-            wgpu_h.C_INT,
-            wgpu_h.C_POINTER,
-            wgpu_h.C_POINTER
+        wgpu_h.C_INT,
+        wgpu_h.C_POINTER,
+        wgpu_h.C_POINTER
     );
 
     /**
@@ -62,9 +58,9 @@ public class WGPUShaderModuleGetCompilationInfoCallback {
     /**
      * Invoke the upcall stub {@code funcPtr}, with given parameters
      */
-    public static void invoke(MemorySegment funcPtr, int status, MemorySegment compilationInfo, MemorySegment userdata) {
+    public static void invoke(MemorySegment funcPtr,int status, MemorySegment compilationInfo, MemorySegment userdata) {
         try {
-            DOWN$MH.invokeExact(funcPtr, status, compilationInfo, userdata);
+             DOWN$MH.invokeExact(funcPtr, status, compilationInfo, userdata);
         } catch (Throwable ex$) {
             throw new AssertionError("should not reach here", ex$);
         }
